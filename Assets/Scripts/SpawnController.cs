@@ -32,19 +32,19 @@ public class SpawnController : MonoBehaviour
         isGameRunning = true;
 
 
-        spawnCoroutine = StartCoroutine(SpawnRandomItem());
+        //spawnCoroutine = StartCoroutine(SpawnRandomItem());
     }
 
     private void OnStartGame()
     {
         isGameRunning = true;
-        spawnCoroutine = StartCoroutine(SpawnRandomItem());
+      //  spawnCoroutine = StartCoroutine(SpawnRandomItem());
     }
 
     public void OnRoundOver()
     {
         isGameRunning = false;
-        StopCoroutine(spawnCoroutine);
+      //  StopCoroutine(spawnCoroutine);
     }
 
     public void OnRestartGame()
@@ -53,7 +53,28 @@ public class SpawnController : MonoBehaviour
         OnStartGame();
     }
 
-    private IEnumerator SpawnRandomItem()
+    public void OnMusicBeat()
+    {
+        //SpawnRandomItemWithChanceOfDouble();
+        SpawnItem();
+    }
+
+    private void SpawnRandomItemWithChanceOfDouble()
+    {
+        float rndValue = Random.value;
+
+        if (rndValue <= currentGamePreset.chanceOfDoubleSpawn)
+        {
+            SpawnItem();
+            SpawnItem();
+        }
+        else
+        {
+            SpawnItem();
+        }
+    }
+
+    private IEnumerator StartSpawnCicle()
     {
         //Добавить спав сразу нескольких заказов
         //Шанс зависит от сложности

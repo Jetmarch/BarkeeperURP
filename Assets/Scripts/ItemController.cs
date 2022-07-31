@@ -32,11 +32,17 @@ public class ItemController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isOnRake == true) return;
+       // if (isOnRake == true) return;
         if (isGameRunning == false) return;
 
-        RakeStack.Instance.Push(this.gameObject);
-        isOnRake = true;
+        //RakeStack.Instance.Push(this.gameObject);
+        //isOnRake = true;
+
+        
+
+        //Анимация или партиклы здесь
+        gameObject.SetActive(false);
+        liquid.SetActive(false);
     }
 
     public void Fill(Material liquid)
